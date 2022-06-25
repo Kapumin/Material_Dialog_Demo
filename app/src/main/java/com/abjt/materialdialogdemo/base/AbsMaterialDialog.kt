@@ -2,15 +2,16 @@ package com.abjt.materialdialogdemo.base
 
 import android.os.Bundle
 import androidx.fragment.app.DialogFragment
+import com.abjt.materialdialogdemo.isShowGone
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.WhichButton
 import com.afollestad.materialdialogs.actions.getActionButton
 
-abstract class AbsMaterialDialog : DialogFragment() {
+abstract class AbsMaterialDialog<resultType : Any> : DialogFragment() {
 
     protected lateinit var materialDialog: MaterialDialog
-    protected var title: String? = ""
-    protected var message: String? = ""
+    protected var dialogTitle: String? = ""
+    protected var dialogMessage: String? = ""
     protected var positiveButtonLabel: String = "Confirm"
     protected var negativeButtonLabel: String = "Cancel"
 
@@ -18,24 +19,25 @@ abstract class AbsMaterialDialog : DialogFragment() {
         super.onCreate(savedInstanceState)
         readBundle(savedInstanceState)
         initMaterialDialog()
-        hideMaterialDialogActionButtons(false)
+        showMaterialDialogActionButtons(false)
     }
 
     private fun initMaterialDialog() {
         materialDialog = MaterialDialog(requireActivity()).apply {
-            title(text = title)
-            message(text = message)
+            title(text = dialogTitle)
+            message(text = dialogMessage)
             positiveButton(text = positiveButtonLabel)
             negativeButton(text = negativeButtonLabel)
         }
     }
 
     //later call this fun to show action buttons whereever required
-    protected fun hideMaterialDialogActionButtons(isShow: Boolean) {
+    protected fun showMaterialDialogActionButtons(isShow: Boolean) {
         materialDialog.getActionButton(WhichButton.POSITIVE).isShowGone(isShow)
         materialDialog.getActionButton(WhichButton.NEGATIVE).isShowGone(isShow)
     }
 
     abstract fun readBundle(savedInstanceState: Bundle?)
 
+    abstract fun sendResult(result: resultType)
 }

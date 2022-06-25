@@ -14,10 +14,10 @@
         android:layout_marginTop="50dp"
         android:text="Clicked Position : "
         android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/list_dialog_opener"
         app:layout_constraintEnd_toStartOf="@+id/tv_clicked_position"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/dialog_opener"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_clicked_position"
@@ -57,16 +57,51 @@
         app:layout_constraintTop_toTopOf="@+id/tv_label_2"
         tools:text="Second Item" />
 
+    <TextView
+        android:id="@+id/tv_label_3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:text="Clicked Action Button : "
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toStartOf="@+id/tv_clicked_action"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_label_2" />
+
+    <TextView
+        android:id="@+id/tv_clicked_action"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:textColor="@color/teal_200"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_label_3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tv_label_3"
+        app:layout_constraintTop_toTopOf="@+id/tv_label_3"
+        tools:text="Confirm Button Clicked" />
+
 
     <Button
-        android:id="@+id/dialog_opener"
+        android:id="@+id/list_dialog_opener"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="?attr/actionBarSize"
         android:text="Open List Dialog"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/action_dialog_opener"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/action_dialog_opener"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="?attr/actionBarSize"
+        android:text="Open Action Dialog"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/list_dialog_opener" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,4 +1,4 @@
-package com.abjt.materialdialogdemo.base
+package com.abjt.materialdialogdemo
 
 import android.view.View
 
@@ -11,5 +11,11 @@ fun View.show() {
 }
 
 fun View.isShowGone(isShow: Boolean) {
-    this.visibility = if (isShow) View.VISIBLE else View.GONE
+    if (isShow) show() else gone()
+}
+
+fun View.setOnClick(onViewClicked: () -> Unit) {
+    this.setOnClickListener {
+        onViewClicked()
+    }
 }
